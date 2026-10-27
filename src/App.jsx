@@ -1,11 +1,9 @@
-import Header from "./components/Header";
-import ProductSlider from "./components/ProductSlider";
+import Home from "../src/pages/Home"
 
 function App() {
   return (
     <div>
-      <Header />
-      <ProductSlider/>
+      <Home/>
     </div>
   );
 }
