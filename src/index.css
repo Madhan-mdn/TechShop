@@ -29,3 +29,41 @@ img {
   max-width: 100%;
   display: block;
 }
+
+.slick-dots {
+  bottom: 20px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}
+
+.slick-dots li {
+  width: 4px;
+  height: 4px;
+  margin: 0;
+}
+
+.slick-dots li button {
+  width: 4px;
+  height: 4px;
+  padding: 0;
+}
+
+.slick-dots li button:before {
+  content: "" !important;
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  line-height: 2px;
+  border-radius: 50%;
+  background: #555;
+  opacity: 1;
+  font-size: 0;
+  transition: background 0.2s ease;
+}
+
+.slick-dots li.slick-active button:before {
+  background: #e10600;
+  opacity: 1;
+}
