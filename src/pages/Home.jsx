@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import ProductSlider from "../components/ProductSlider";
 import FeaturedProducts from "../components/FeaturedProducts";
-// import TopProducts from "../components/TopProducts";
+import TopProducts from "../components/TopProducts";
 // import Advantages from "../components/Advantages";
 // import Footer from "../components/Footer";
 
@@ -13,6 +13,7 @@ function Home() {
       <main>
         <ProductSlider />
         <FeaturedProducts />
+        <TopProducts/>
       </main>
     </>
   );
