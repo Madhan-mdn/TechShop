@@ -3,10 +3,12 @@ import Home from "./pages/Home";
 import Cart from "./components/Cart";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import SearchOverlay from "./components/SearchOverlay";
 
 function App() {
   return (
     <BrowserRouter>
+      <SearchOverlay />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route

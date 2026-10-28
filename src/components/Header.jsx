@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { openSearch } from "../redux/searchSlice";
 import {
   FiSearch,
   FiShoppingCart,
@@ -7,6 +8,7 @@ import {
 } from "react-icons/fi";
 
 function Header() {
+  const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
   const uniqueCount = cartItems.length;
 
@@ -23,6 +25,8 @@ function Header() {
         <button
           type="button"
           title="Search"
+          onClick={() => dispatch(openSearch())}
+          aria-label="Open search"
           className="transition-colors hover:text-white cursor-pointer"
         >
           <FiSearch size={21} />
