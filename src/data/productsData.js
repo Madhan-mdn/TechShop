@@ -311,10 +311,10 @@ const productsData = [
     {
         id: 15,
         images: [
-            "/images/products/sonych710n-1.png",
-            "/images/products/sonych710n-2.png",
-            "/images/products/sonych710n-3.png",
-            "/images/products/sonych710n-4.png",
+            "/images/products/sonyCh710n-1.png",
+            "/images/products/sonyCh710n-2.png",
+            "/images/products/sonyCh710n-3.png",
+            "/images/products/sonyCh710n-4.png",
         ],
         brand: "Sony",
         title: "Sony WH-CH710N",

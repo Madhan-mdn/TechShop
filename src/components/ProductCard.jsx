@@ -38,7 +38,10 @@ function ProductCard({ product }) {
   };
 
   return (
-    <article className="group flex h-full flex-col justify-between border border-[#262626] bg-[#121212] transition-colors duration-200 hover:border-[#383838]">
+    <article
+      id={product.id ? `product-${product.id}` : undefined}
+      className="group flex h-full flex-col justify-between border border-[#262626] bg-[#121212] transition-colors duration-200 hover:border-[#383838]"
+    >
       {/* Top Section: Image, Rating, Title & Info */}
       <div>
         {/* Product image container with subtle hover scale */}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import productsData from "../data/productsData";
 import ProductCard from "./ProductCard";
 
@@ -68,6 +69,7 @@ function getCategory(product) {
 }
 
 function TopProducts() {
+  const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filteredProducts =
@@ -112,9 +114,7 @@ function TopProducts() {
         <button
           type="button"
           className="group flex h-full min-h-[340px] cursor-pointer flex-col items-center justify-center border border-[#262626] bg-[#121212] p-6 text-center transition-colors duration-200 hover:border-[#383838] hover:bg-[#161616] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
-          onClick={() => {
-            // Routing will be added later.
-          }}
+          onClick={() => navigate("/products")}
         >
           <span className="text-base font-medium text-neutral-300 transition-colors duration-200 group-hover:text-white sm:text-lg">
             Browse All

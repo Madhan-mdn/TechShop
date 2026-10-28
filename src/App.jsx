@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Cart from "./components/Cart";
+import Products from "./pages/Products";
+import Cart from "./pages/Cart";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SearchOverlay from "./components/SearchOverlay";
@@ -13,6 +14,7 @@ function App() {
       <AuthModal />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
         <Route
           path="/cart"
           element={
