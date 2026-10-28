@@ -4,11 +4,13 @@ import Cart from "./components/Cart";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SearchOverlay from "./components/SearchOverlay";
+import AuthModal from "./components/AuthModal";
 
 function App() {
   return (
     <BrowserRouter>
       <SearchOverlay />
+      <AuthModal />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
