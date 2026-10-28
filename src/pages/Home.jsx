@@ -3,7 +3,7 @@ import ProductSlider from "../components/ProductSlider";
 import FeaturedProducts from "../components/FeaturedProducts";
 import TopProducts from "../components/TopProducts";
 import Advantages from "../components/Advantages";
-// import Footer from "../components/Footer";
+import Footer from "../components/Footer";
 
 function Home() {
   return (
@@ -16,6 +16,8 @@ function Home() {
         <TopProducts/>
         <Advantages />
       </main>
+
+      <Footer />
     </>
   );
 }
