@@ -129,17 +129,16 @@ ol {
 
 .product-slider .slick-slider {
   position: relative;
-  border-radius: 1rem;
 }
 
 .product-slider .slick-list {
-  border-radius: 1rem;
+  overflow: hidden;
 }
 
 /* Scoped pagination dots for ProductSlider */
 .product-slider .slick-dots {
   position: absolute;
-  bottom: 18px;
+  bottom: 24px;
   display: flex !important;
   justify-content: center;
   align-items: center;

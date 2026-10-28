@@ -27,19 +27,19 @@ function ProductSlider() {
   }
 
   return (
-    <section className="product-slider mx-auto w-full max-w-[1400px] px-4 py-4 sm:px-6 lg:px-8">
+    <section className="product-slider relative w-full overflow-hidden bg-[#141414]">
       <Slider {...settings}>
         {slides.map((item) => (
           <div key={item.id ?? item.title}>
-            <div className="relative flex h-[480px] sm:h-[520px] lg:h-[560px] items-center overflow-hidden rounded-2xl bg-gradient-to-br from-[#181818] via-[#141414] to-[#101010] border border-white/[0.06] px-6 sm:px-10 md:px-14 lg:px-16 text-[#a8b1c5] shadow-2xl">
+            <div className="relative flex h-[480px] sm:h-[520px] lg:h-[580px] w-full items-center overflow-hidden bg-[#141414] px-6 sm:px-12 md:px-16 lg:px-20 xl:px-28 text-[#a8b1c5]">
 
               {/* Large Background Product Type */}
-              <span className="absolute left-4 top-8 sm:left-8 sm:top-12 lg:left-12 lg:top-14 z-0 select-none whitespace-nowrap text-[80px] sm:text-[120px] md:text-[150px] lg:text-[190px] font-black uppercase leading-none text-white/[0.025] pointer-events-none">
+              <span className="absolute left-6 top-6 sm:left-12 sm:top-10 lg:left-20 lg:top-12 z-0 select-none whitespace-nowrap text-[70px] sm:text-[110px] md:text-[140px] lg:text-[180px] font-black uppercase leading-none text-white/[0.035] pointer-events-none">
                 {item.type}
               </span>
 
               {/* Product Information */}
-              <div className="relative z-10 w-[55%] sm:w-[52%] md:w-1/2 max-w-[560px]">
+              <div className="relative z-10 w-[58%] sm:w-[54%] md:w-1/2 max-w-[560px]">
                 <p className="mb-2 sm:mb-3 text-xs sm:text-sm font-semibold tracking-widest uppercase text-[#a8b1c5]">
                   {item.title}
                 </p>
@@ -60,18 +60,18 @@ function ProductSlider() {
 
                 <button
                   type="button"
-                  className="inline-flex items-center justify-center bg-[#e10600] px-5 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm lg:text-base font-semibold text-white rounded-md shadow-lg shadow-red-950/40 transition-all duration-300 hover:bg-[#c00500] hover:shadow-red-600/30 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                  className="inline-flex items-center justify-center bg-[#e10600] px-5 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm lg:text-base font-semibold text-white transition-colors duration-200 hover:bg-[#c00500] cursor-pointer"
                 >
                   Shop Now
                 </button>
               </div>
 
               {/* Product Image */}
-              <div className="absolute right-2 sm:right-6 lg:right-12 top-1/2 flex h-[70%] sm:h-[80%] lg:h-[85%] w-[42%] sm:w-[45%] lg:w-[46%] -translate-y-1/2 items-center justify-center pointer-events-none z-10">
+              <div className="absolute right-4 sm:right-10 md:right-16 lg:right-20 xl:right-28 top-1/2 flex h-[72%] sm:h-[80%] lg:h-[86%] w-[42%] sm:w-[45%] lg:w-[46%] -translate-y-1/2 items-center justify-center pointer-events-none z-10">
                 <img
                   src={item.images[0]}
                   alt={item.title}
-                  className="h-full w-full object-contain filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.7)] transition-transform duration-700 ease-out hover:scale-105 select-none"
+                  className="h-full w-full object-contain filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.7)] select-none"
                 />
               </div>
 
