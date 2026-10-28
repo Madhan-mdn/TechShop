@@ -1,6 +1,20 @@
-import React from "react";
+import { useState, useRef, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartSlice";
 
 function ProductCard({ product }) {
+  const dispatch = useDispatch();
+  const [isAdded, setIsAdded] = useState(false);
+  const timerRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
+  }, []);
+
   if (!product) return null;
 
   const image = product.images?.[0] || product.heroImage;
@@ -8,6 +22,20 @@ function ProductCard({ product }) {
   const originalPrice =
     product.originalPrice ?? product.priceBeforeDiscount;
   const rateCount = product.rateCount ?? 5;
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+
+    setIsAdded(true);
+
+    timerRef.current = setTimeout(() => {
+      setIsAdded(false);
+    }, 2000);
+  };
 
   return (
     <article className="group flex h-full flex-col justify-between border border-[#262626] bg-[#121212] transition-colors duration-200 hover:border-[#383838]">
@@ -81,12 +109,14 @@ function ProductCard({ product }) {
         {/* Add to Cart button */}
         <button
           type="button"
-          className="w-full cursor-pointer bg-[#e10600] py-2 text-center text-xs font-medium text-white transition-colors duration-200 hover:bg-red-700 active:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500 sm:py-2.5 sm:text-sm"
-          onClick={() => {
-            // Cart functionality
-          }}
+          onClick={handleAddToCart}
+          className={`w-full cursor-pointer py-2 text-center text-xs font-medium text-white transition-colors duration-300 ease-in-out focus-visible:outline-2 focus-visible:outline-offset-2 sm:py-2.5 sm:text-sm ${
+            isAdded
+              ? "bg-green-600 hover:bg-green-700 focus-visible:outline-green-500"
+              : "bg-[#e10600] hover:bg-red-700 active:bg-red-800 focus-visible:outline-red-500"
+          }`}
         >
-          Add to cart
+          {isAdded ? "Added" : "Add to cart"}
         </button>
       </div>
     </article>
