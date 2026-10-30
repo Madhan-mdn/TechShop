@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
 
@@ -22,6 +23,7 @@ function ProductCard({ product }) {
   const originalPrice =
     product.originalPrice ?? product.priceBeforeDiscount;
   const rateCount = product.rateCount ?? 5;
+  const productLink = `/products/${product.id}`;
 
   const handleAddToCart = () => {
     dispatch(addToCart(product));
@@ -45,7 +47,10 @@ function ProductCard({ product }) {
       {/* Top Section: Image, Rating, Title & Info */}
       <div>
         {/* Product image container with subtle hover scale */}
-        <div className="relative flex h-48 w-full items-center justify-center overflow-hidden bg-[#121212] p-4 sm:h-52 sm:p-5">
+        <Link
+          to={productLink}
+          className="relative flex h-48 w-full items-center justify-center overflow-hidden bg-[#121212] p-4 sm:h-52 sm:p-5 cursor-pointer"
+        >
           {image && (
             <img
               src={image}
@@ -54,7 +59,7 @@ function ProductCard({ product }) {
               loading="lazy"
             />
           )}
-        </div>
+        </Link>
 
         {/* Product details */}
         <div className="px-4 pt-1 sm:px-5">
@@ -71,12 +76,14 @@ function ProductCard({ product }) {
           </div>
 
           {/* Product title */}
-          <h3
-            className="truncate text-sm font-semibold leading-tight text-white sm:text-base"
-            title={product.title}
-          >
-            {product.title}
-          </h3>
+          <Link to={productLink} className="block">
+            <h3
+              className="truncate text-sm font-semibold leading-tight text-white transition-colors hover:text-[#e10600] sm:text-base cursor-pointer"
+              title={product.title}
+            >
+              {product.title}
+            </h3>
+          </Link>
 
           {/* Short description */}
           {product.info && (
