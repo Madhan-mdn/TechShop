@@ -1,12 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { FiUser } from "react-icons/fi";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Advantages from "../components/Advantages";
+import ProductSpecifications from "../components/ProductSpecifications";
+import ProductOverview from "../components/ProductOverview";
+import ProductReviews from "../components/ProductReviews";
 import productsData from "../data/productsData";
-import reviewsData from "../data/reviewsData";
 import { addToCart } from "../redux/cartSlice";
 
 function ProductDetails() {
@@ -30,6 +31,11 @@ function ProductDetails() {
     setActiveImageIndex(0);
     setActiveTab("Specifications");
   }
+
+  // Scroll to top on mount or route param change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [productId]);
 
   useEffect(() => {
     return () => {
@@ -271,115 +277,17 @@ function ProductDetails() {
         <div className="py-8 sm:py-10 w-full">
           {/* 1. Specifications Tab */}
           {activeTab === "Specifications" && (
-            <div className="w-full space-y-5 text-xs sm:text-sm">
-              <div className="grid grid-cols-[140px_1fr] sm:grid-cols-[200px_1fr] md:grid-cols-[240px_1fr] py-1">
-                <span className="text-[#a8b1c5]">Brand</span>
-                <span className="text-white font-medium">
-                  {product.brand || "—"}
-                </span>
-              </div>
-              <div className="grid grid-cols-[140px_1fr] sm:grid-cols-[200px_1fr] md:grid-cols-[240px_1fr] py-1">
-                <span className="text-[#a8b1c5]">Model</span>
-                <span className="text-white font-medium">
-                  {product.title || "—"}
-                </span>
-              </div>
-              <div className="grid grid-cols-[140px_1fr] sm:grid-cols-[200px_1fr] md:grid-cols-[240px_1fr] py-1">
-                <span className="text-[#a8b1c5]">Generic Name</span>
-                <span className="text-white font-medium">
-                  {product.category || "—"}
-                </span>
-              </div>
-              <div className="grid grid-cols-[140px_1fr] sm:grid-cols-[200px_1fr] md:grid-cols-[240px_1fr] py-1">
-                <span className="text-[#a8b1c5]">Headphone Type</span>
-                <span className="text-white font-medium">
-                  {product.type || "—"}
-                </span>
-              </div>
-              <div className="grid grid-cols-[140px_1fr] sm:grid-cols-[200px_1fr] md:grid-cols-[240px_1fr] py-1">
-                <span className="text-[#a8b1c5]">Connectivity</span>
-                <span className="text-white font-medium">
-                  {product.connectivity || "—"}
-                </span>
-              </div>
-              <div className="grid grid-cols-[140px_1fr] sm:grid-cols-[200px_1fr] md:grid-cols-[240px_1fr] py-1">
-                <span className="text-[#a8b1c5]">Microphone</span>
-                <span className="text-white font-medium">Yes</span>
-              </div>
-            </div>
+            <ProductSpecifications product={product} />
           )}
 
           {/* 2. Overview Tab */}
           {activeTab === "Overview" && (
-            <div className="w-full space-y-6 text-xs sm:text-sm text-[#a8b1c5] leading-relaxed">
-              <h3 className="text-sm sm:text-base font-medium text-white">
-                The{" "}
-                <span className="text-[#e10600] font-bold">
-                  {product.title}
-                </span>{" "}
-                {product.info} provides with fabulous sound quality
-              </h3>
-
-              <ul className="space-y-2 text-[#a8b1c5]">
-                <li>• Sound Tuned to Perfection</li>
-                <li>• Comfortable to Wear</li>
-                <li>• Long Hours Playback Time</li>
-              </ul>
-
-              <p>
-                Buy the{" "}
-                <span className="text-white font-semibold">
-                  {product.title} {product.info}
-                </span>{" "}
-                which offers you with fabulous music experience by providing you
-                with awesome sound quality that you can never move on from. Enjoy
-                perfect flexibility and mobility with amazing musical quality
-                with these {product.category || "audio products"} giving you a
-                truly awesome audio experience. It blends with exceptional sound
-                quality and a range of smart features for an unrivalled listening
-                experience.
-              </p>
-            </div>
+            <ProductOverview product={product} />
           )}
 
           {/* 3. Reviews Tab */}
           {activeTab === "Reviews" && (
-            <div className="w-full space-y-6 py-2">
-              {reviewsData.map((rev) => (
-                <div key={rev.id} className="flex items-start gap-4">
-                  {/* User Avatar */}
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-neutral-800 text-neutral-300">
-                    <FiUser size={18} />
-                  </div>
-
-                  {/* Review Information */}
-                  <div className="flex-1">
-                    <h4 className="text-sm font-semibold text-white">
-                      {rev.name}
-                    </h4>
-
-                    <div className="mt-1 flex items-center gap-2 text-xs text-[#a8b1c5]">
-                      <div
-                        className="flex items-center gap-0.5 text-[#e10600]"
-                        aria-label={`${rev.rateCount} out of 5 stars`}
-                      >
-                        {Array.from({ length: rev.rateCount || 5 }).map(
-                          (_, idx) => (
-                            <span key={idx}>★</span>
-                          )
-                        )}
-                      </div>
-                      <span className="text-[#444]">|</span>
-                      <span>{rev.date}</span>
-                    </div>
-
-                    <p className="mt-2 text-xs sm:text-sm text-[#a8b1c5]">
-                      {rev.review}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <ProductReviews />
           )}
         </div>
       </main>

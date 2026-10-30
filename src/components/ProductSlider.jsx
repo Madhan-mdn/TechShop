@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import SlickModule from "react-slick";
 
 const Slider = SlickModule.default ?? SlickModule;
@@ -40,13 +41,18 @@ function ProductSlider() {
 
               {/* Product Information */}
               <div className="relative z-10 w-[58%] sm:w-[54%] md:w-1/2 max-w-[560px]">
-                <p className="mb-2 sm:mb-3 text-xs sm:text-sm font-semibold tracking-widest uppercase text-[#a8b1c5]">
+                <Link
+                  to={`/products/${item.id}`}
+                  className="mb-2 sm:mb-3 block text-xs sm:text-sm font-semibold tracking-widest uppercase text-[#a8b1c5] hover:text-white transition-colors cursor-pointer"
+                >
                   {item.title}
-                </p>
+                </Link>
 
-                <h2 className="mb-4 sm:mb-6 text-xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.15] tracking-tight text-white">
-                  {item.tagline}
-                </h2>
+                <Link to={`/products/${item.id}`}>
+                  <h2 className="mb-4 sm:mb-6 text-xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.15] tracking-tight text-white hover:text-[#e10600] transition-colors cursor-pointer">
+                    {item.tagline}
+                  </h2>
+                </Link>
 
                 <div className="mb-6 sm:mb-8 flex items-baseline gap-3 sm:gap-4">
                   <span className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white tracking-tight">
@@ -58,22 +64,25 @@ function ProductSlider() {
                   </span>
                 </div>
 
-                <button
-                  type="button"
+                <Link
+                  to={`/products/${item.id}`}
                   className="inline-flex items-center justify-center bg-[#e10600] px-5 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm lg:text-base font-semibold text-white transition-colors duration-200 hover:bg-[#c00500] cursor-pointer"
                 >
                   Shop Now
-                </button>
+                </Link>
               </div>
 
               {/* Product Image */}
-              <div className="absolute right-4 sm:right-10 md:right-16 lg:right-20 xl:right-28 top-1/2 flex h-[72%] sm:h-[80%] lg:h-[86%] w-[42%] sm:w-[45%] lg:w-[46%] -translate-y-1/2 items-center justify-center pointer-events-none z-10">
+              <Link
+                to={`/products/${item.id}`}
+                className="absolute right-4 sm:right-10 md:right-16 lg:right-20 xl:right-28 top-1/2 flex h-[72%] sm:h-[80%] lg:h-[86%] w-[42%] sm:w-[45%] lg:w-[46%] -translate-y-1/2 items-center justify-center z-10 cursor-pointer"
+              >
                 <img
                   src={item.images[0]}
                   alt={item.title}
-                  className="h-full w-full object-contain filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.7)] select-none"
+                  className="h-full w-full object-contain filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.7)] select-none transition-transform duration-300 hover:scale-105"
                 />
-              </div>
+              </Link>
 
             </div>
           </div>

@@ -1,5 +1,6 @@
 
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import SlickModule from "react-slick";
 import productsData from "../data/productsData";
 
@@ -123,19 +124,25 @@ function FeaturedProducts() {
           return (
             <div key={`${product.id}-${idx}`}>
               <article className="featured-card flex h-[300px] flex-col items-center justify-center px-2 text-center sm:h-[340px]">
-                <p className="mb-4 min-h-8 text-xs font-medium text-[#a8b1c5] sm:text-sm">
+                <Link
+                  to={`/products/${product.id}`}
+                  className="mb-4 min-h-8 text-xs font-medium text-[#a8b1c5] hover:text-white transition-colors cursor-pointer sm:text-sm line-clamp-2 block"
+                >
                   {product.title}
-                </p>
+                </Link>
 
-                <div className="featured-image mb-5 flex h-28 w-full items-center justify-center sm:h-36">
+                <Link
+                  to={`/products/${product.id}`}
+                  className="featured-image mb-5 flex h-28 w-full items-center justify-center cursor-pointer sm:h-36"
+                >
                   {image && (
                     <img
                       src={image}
                       alt={product.title}
-                      className="h-full w-full object-contain"
+                      className="h-full w-full object-contain transition-transform duration-300 hover:scale-105"
                     />
                   )}
-                </div>
+                </Link>
 
                 <div className="featured-details">
                   <p className="text-sm font-bold text-[#a8b1c5] sm:text-base">

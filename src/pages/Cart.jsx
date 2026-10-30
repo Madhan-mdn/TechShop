@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { BsCartX } from "react-icons/bs";
 import { TbTrash } from "react-icons/tb";
@@ -79,23 +79,31 @@ function Cart() {
 
                 <div className="flex items-center gap-5 sm:gap-8 lg:gap-10 py-6 sm:py-8 first:pt-1 last:pb-1">
                   {/* Product Image: Clean presentation with NO border, card background, outline, or shadow */}
-                  <div className="flex h-24 w-24 shrink-0 items-center justify-center bg-transparent sm:h-32 sm:w-32 lg:h-36 lg:w-36">
+                  <Link
+                    to={`/products/${item.id}`}
+                    className="flex h-24 w-24 shrink-0 items-center justify-center bg-transparent sm:h-32 sm:w-32 lg:h-36 lg:w-36 cursor-pointer"
+                  >
                     {image && (
                       <img
                         src={image}
                         alt={item.title}
-                        className="h-full w-full object-contain select-none"
+                        className="h-full w-full object-contain select-none transition-transform duration-300 hover:scale-105"
                       />
                     )}
-                  </div>
+                  </Link>
 
                   {/* Product Details & Controls */}
                   <div className="flex flex-1 flex-col justify-between min-w-0">
                     {/* Title & Delete Icon */}
                     <div className="flex items-start justify-between gap-3">
-                      <h3 className="text-sm font-medium leading-snug text-neutral-200 line-clamp-2 sm:text-base">
-                        {fullTitle}
-                      </h3>
+                      <Link
+                        to={`/products/${item.id}`}
+                        className="hover:text-white transition-colors flex-1"
+                      >
+                        <h3 className="text-sm font-medium leading-snug text-neutral-200 line-clamp-2 sm:text-base cursor-pointer">
+                          {fullTitle}
+                        </h3>
+                      </Link>
 
                       <button
                         type="button"
