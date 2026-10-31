@@ -3,12 +3,14 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import SlickModule from "react-slick";
 import ProductCard from "./ProductCard";
 import productsData from "../data/productsData";
-import { getProductCategory } from "../utils/categoryHelper";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const Slider = SlickModule.default ?? SlickModule;
+
+const normalizeCategory = (category) =>
+  category ? String(category).trim().toLowerCase() : "";
 
 function PrevArrow({ className, style, onClick }) {
   const isDisabled = className?.includes("slick-disabled");
@@ -62,12 +64,16 @@ function RelatedProducts({ currentProduct }) {
 
   if (!currentProduct) return null;
 
-  const currentCategory = getProductCategory(currentProduct);
+  const currentCategory = normalizeCategory(currentProduct.category);
+  if (!currentCategory) {
+    return null;
+  }
 
   // Filter products by matching category, strictly excluding the currently viewed product
   const relatedProducts = productsData.filter((product) => {
     if (String(product.id) === String(currentProduct.id)) return false;
-    return getProductCategory(product) === currentCategory;
+    const productCategory = normalizeCategory(product.category);
+    return Boolean(productCategory && productCategory === currentCategory);
   });
 
   if (relatedProducts.length === 0) {
