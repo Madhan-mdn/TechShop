@@ -404,3 +404,96 @@ ol {
     transition: none !important;
   }
 }
+
+/* ========================================
+   Related Products Scoped Slider Styles
+======================================== */
+
+.related-products {
+  position: relative;
+  width: 100%;
+}
+
+.related-products .slick-slider {
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.related-products .slick-list {
+  overflow: hidden;
+  margin-inline: -10px;
+}
+
+.related-products .slick-slide > div {
+  height: 100%;
+}
+
+/* Hide default slick arrow text/pseudo-elements */
+.related-products .slick-prev::before,
+.related-products .slick-next::before {
+  display: none !important;
+}
+
+.related-products .slick-dots {
+  position: absolute;
+  bottom: 0px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 10;
+}
+
+.related-products .slick-dots li {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.related-products .slick-dots li button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+}
+
+.related-products .slick-dots li button::before {
+  content: "" !important;
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #555555;
+  opacity: 1;
+  font-size: 0;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.related-products .slick-dots li:hover button::before {
+  background: #888888;
+}
+
+.related-products .slick-dots li.slick-active button::before {
+  background: #e10600;
+  transform: scale(1.15);
+}

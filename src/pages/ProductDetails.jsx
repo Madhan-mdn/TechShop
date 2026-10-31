@@ -7,6 +7,7 @@ import Advantages from "../components/Advantages";
 import ProductSpecifications from "../components/ProductSpecifications";
 import ProductOverview from "../components/ProductOverview";
 import ProductReviews from "../components/ProductReviews";
+import RelatedProducts from "../components/RelatedProducts";
 import productsData from "../data/productsData";
 import { addToCart } from "../redux/cartSlice";
 
@@ -30,6 +31,7 @@ function ProductDetails() {
     setPrevProductId(productId);
     setActiveImageIndex(0);
     setActiveTab("Specifications");
+    setIsAdded(false);
   }
 
   // Scroll to top on mount or route param change
@@ -43,7 +45,7 @@ function ProductDetails() {
         clearTimeout(timerRef.current);
       }
     };
-  }, []);
+  }, [productId]);
 
   // Not found state
   if (!product) {
@@ -290,6 +292,9 @@ function ProductDetails() {
             <ProductReviews />
           )}
         </div>
+
+        {/* 4. Related Products Section */}
+        <RelatedProducts currentProduct={product} />
       </main>
 
       {/* Advantages and Footer */}
